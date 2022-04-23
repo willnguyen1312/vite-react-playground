@@ -1,10 +1,15 @@
 import React from "react";
 
 function App() {
+  const [count, setCount] = React.useState(0)
+
+
+  console.log(count)
+  
   return (
     <div
       style={{
-        padding: 20,
+        padding: 30,
       }}
     >
       <video
