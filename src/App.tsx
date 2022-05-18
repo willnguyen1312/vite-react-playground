@@ -2,6 +2,19 @@ import React from "react";
 import JSZip from "jszip";
 import FileSaver from "file-saver";
 
+function download(url, filename) {
+  fetch(url).then(function (t) {
+    return t.blob().then((b) => {
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(b);
+      a.setAttribute("download", filename);
+      a.click();
+    });
+  });
+}
+
+// download("https://get.geojs.io/v1/ip/geo.json", "geoip.json");
+
 function arrayToCsv(data) {
   return data
     .map(
@@ -56,17 +69,38 @@ function App() {
       <button
         onClick={() => {
           // downloadBlob(csv, "export.csv", "text/csv;charset=utf-8;");
+          // https://cdn.filestackcontent.com/wcrjf9qPTCKXV3hMXDwK
 
-          const zip = new JSZip();
-          zip.file("cs1.csv", csv1);
-          zip.file("cs2.csv", csv2);
-          zip.generateAsync({ type: "blob" }).then(function (content) {
-            FileSaver.saveAs(content, "download.zip");
-          });
+          download(
+            "https://cdn.filestackcontent.com/wcrjf9qPTCKXV3hMXDwK",
+            "cors.pdf"
+          );
+          // download("/sample.pdf", "wakanda.pdf");
+
+          // Create a link to download it
+          // var pom = document.createElement("a");
+          // pom.href = "https://cdn.filestackcontent.com/wcrjf9qPTCKXV3hMXDwK";
+          // pom.target = "_blank";
+          // pom.setAttribute("download", "voila.pdf");
+          // pom.click();
+
+          // const zip = new JSZip();
+          // zip.file("cs1.csv", csv1);
+          // zip.file("cs2.csv", csv2);
+          // zip.generateAsync({ type: "blob" }).then(function (content) {
+          //   FileSaver.saveAs(content, "download.zip");
+          // });
         }}
       >
         Download
       </button>
+
+      {/* <a
+        href="https://cdn.filestackcontent.com/wcrjf9qPTCKXV3hMXDwK"
+        download="hello.pdf"
+      >
+        Hello
+      </a> */}
       <video
         style={{
           width: "800px",
