@@ -72,7 +72,8 @@ function App() {
           // https://cdn.filestackcontent.com/wcrjf9qPTCKXV3hMXDwK
 
           download(
-            "https://cdn.filestackcontent.com/wcrjf9qPTCKXV3hMXDwK",
+            // "https://cdn.filestackcontent.com/wcrjf9qPTCKXV3hMXDwK",
+            "https://nestjs-playground13.herokuapp.com/file",
             "cors.pdf"
           );
           // download("/sample.pdf", "wakanda.pdf");
