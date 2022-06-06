@@ -58,7 +58,21 @@ let csv2 = arrayToCsv([
 function App() {
   const [count, setCount] = React.useState(0);
 
-  console.log(count);
+  React.useEffect(() => {
+    async function fetchStuff() {
+      const lang = "es";
+      // const lang = "vi";
+      // const { default: data } = await import(`./date-fns/locale/${lang}`);
+      // https://github.com/vitejs/vite/issues/2579#issuecomment-1143062905
+      const { default: data } = await import(
+        `../node_modules/date-fns/locale/${lang}/index.js`
+      );
+
+      console.log(data);
+    }
+
+    fetchStuff();
+  }, []);
 
   return (
     <div
